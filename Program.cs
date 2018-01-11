@@ -5,7 +5,7 @@
 
     internal class Program
     {
-        private static readonly string HOST = "localhost";
+        private static readonly string HOST = "127.0.0.1";
         private static readonly int PORT = 4462;
 
         public static void Main(string[] args)
