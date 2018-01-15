@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MarkdigEngine" Version="1.0.139" />
+    <PackageReference Include="MarkdigEngine" Version="1.0.141-alpha" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   

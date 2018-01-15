@@ -1,4 +1,5 @@
 artifacts/
+output/
 **/bin/
 **/obj/
 **/.vs/
