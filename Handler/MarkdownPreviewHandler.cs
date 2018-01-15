@@ -80,7 +80,7 @@ namespace MarkdocsService.Handler
                 BasePath = basePath,
                 Extensions = new Dictionary<string, object>
                 {
-                    { LineNumberExtension.EnableSourceInfo, false }
+                    { LineNumberExtension.EnableSourceInfo, true }
                 }
             };
             var markupService = new MarkdigMarkdownService(parameter);
