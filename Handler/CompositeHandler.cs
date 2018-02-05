@@ -23,8 +23,16 @@
             {
                 if (handler.CanHandle(context))
                 {
-                    handler.Handle(context);
-                    return;
+                    try
+                    {
+                        handler.Handle(context);
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        Utility.ReplyServerErrorResponse(context.HttpContext, $"{handler.GetType().Assembly.GetName()} failed, {ex.Message}");
+                        return;
+                    }
                 }
             }
 
