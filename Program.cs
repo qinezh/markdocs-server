@@ -17,7 +17,8 @@
         {
             var handler = new CompositeHandler(
                     new MarkdownPreviewHandler(),
-                    new ExitHandler()
+                    new ExitHandler(),
+                    new PingHandler()
                     );
 
             var service = new MarkdownHttpServer(handler, HOST, PORT);
