@@ -5,8 +5,8 @@ namespace MarkdocsService.Handler
     using System.Collections.Generic;
     using MarkdocsService.Model;
     using Newtonsoft.Json;
-    using MarkdigEngine;
-    using MarkdigEngine.Extensions;
+    using Microsoft.DocAsCode.MarkdigEngine;
+    using Microsoft.DocAsCode.MarkdigEngine.Extensions;
     using Microsoft.DocAsCode.Plugins;
 
     /// <summary>
