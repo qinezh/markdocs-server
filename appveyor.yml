@@ -21,7 +21,7 @@ artifacts:
     type: zip
 
 deploy:
-  release: markdocs-server-v$(appveyor_build_version)
+  release: v$(appveyor_build_version)
   provider: GitHub
   auth_token:
     secure: 6niupbDN/eHdvrTJhzHqDa5xELzBCs7WlRghSKdgO5dr0l3rYur0jQ5V5mtnQ+Xt
