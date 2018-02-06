@@ -1,0 +1,33 @@
+branches:
+  only:
+    - master
+version: 1.0.{build}
+image: Visual Studio 2017
+build_script: build.cmd
+
+test: off
+artifacts:
+  - path: output/win32_x86
+    name: win32_x86
+    type: zip
+  - path: output/win32_x64
+    name: win32_x64
+    type: zip
+  - path: output/linux_x64
+    name: linux_x64
+    type: zip
+  - path: output/darwin_x64
+    name: darwin_x64
+    type: zip
+
+deploy:
+  release: markdocs-server-v$(appveyor_build_version)
+  provider: GitHub
+  auth_token:
+    secure: 6niupbDN/eHdvrTJhzHqDa5xELzBCs7WlRghSKdgO5dr0l3rYur0jQ5V5mtnQ+Xt
+  artifact: /.*\.zip/
+  draft: false
+  prerelease: true
+  force_update: true
+  on:
+    branch: master
