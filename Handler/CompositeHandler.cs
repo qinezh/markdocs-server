@@ -28,6 +28,14 @@
                         handler.Handle(context);
                         return;
                     }
+                    catch (HandlerClientException)
+                    {
+                        throw;
+                    }
+                    catch (HandlerServerException)
+                    {
+                        throw;
+                    }
                     catch (Exception ex)
                     {
                         Utility.ReplyServerErrorResponse(context.HttpContext, $"{handler.GetType().Assembly.GetName()} failed, {ex.Message}");
