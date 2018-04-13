@@ -8,6 +8,7 @@ namespace MarkdocsService.Handler
     using Microsoft.DocAsCode.MarkdigEngine;
     using Microsoft.DocAsCode.MarkdigEngine.Extensions;
     using Microsoft.DocAsCode.Plugins;
+    using Microsoft.DocAsCode.Common;
 
     /// <summary>
     /// POST {content: <markdown>}
@@ -75,6 +76,7 @@ namespace MarkdocsService.Handler
 
         private string Markup(string markdown, string filePath = "topic.md", string basePath = ".")
         {
+            EnvironmentContext.FileAbstractLayerImpl = FileAbstractLayerBuilder.Default.ReadFromRealFileSystem(basePath).WriteToRealFileSystem(basePath).Create();
             var parameter = new MarkdownServiceParameters
             {
                 BasePath = basePath,
