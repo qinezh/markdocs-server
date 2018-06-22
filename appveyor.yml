@@ -8,6 +8,9 @@ build_script: build.cmd
 
 test: off
 artifacts:
+  - path: output/netcore
+    name: netcore
+    type: zip
   - path: output/win32_x86
     name: win32_x86
     type: zip
