@@ -1,31 +1,35 @@
-﻿namespace MarkdocsService
+﻿using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+
+namespace DocsPreviewService
 {
-    using System;
-    using MarkdocsService.Handler;
-
-    internal class Program
+    public class Program
     {
-        private static readonly string HOST = "127.0.0.1";
-        private static readonly int PORT = 4462;
+        private static readonly CancellationTokenSource s_cancelTokenSource = new CancellationTokenSource();
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            HandleRequest();
+            var host = new WebHostBuilder()
+                        .UseKestrel()
+                        .UseStartup<Startup>()
+                        .UseUrls("http://localhost:4462")
+                        .Build();
+            try
+            {
+                await host.RunAsync(s_cancelTokenSource.Token);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
-        private static void HandleRequest()
+        public static void Shutdown()
         {
-            var handler = new CompositeHandler(
-                    new MarkdownPreviewHandler(),
-                    new ExitHandler(),
-                    new PingHandler()
-                    );
-
-            var service = new MarkdownHttpServer(handler, HOST, PORT);
-            service.Start();
-            Console.WriteLine("Start...");
-            service.WaitForExit();
-            Console.WriteLine("Exit.");
+            s_cancelTokenSource.Cancel();
         }
     }
 }
