@@ -20,7 +20,7 @@ namespace DocsPreviewService.Controllers
                 return Ok();
             }
 
-            if(string.Equals("ping", command, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals("ping", command, StringComparison.OrdinalIgnoreCase))
             {
                 return Ok();
             }
@@ -31,7 +31,7 @@ namespace DocsPreviewService.Controllers
         [HttpPost]
         public ActionResult<string> Markup([FromBody] MarkupRequest data)
         {
-            return Markup(data.Content, data.FilePath);
+            return Markup(data.Content, data.FilePath, data.BasePath);
         }
 
         public class MarkupRequest

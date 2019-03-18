@@ -9,11 +9,12 @@ namespace DocsPreviewService
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             app.UseMvc();
         }
     }
